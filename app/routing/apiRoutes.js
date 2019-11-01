@@ -6,7 +6,7 @@ module.exports = function (app) {
   })
 
   app.post('/api/friends', function (req, res) {
-    console.log(req.body)
+    console.log('data recieved', req.body)
     var newMatch = req.body
     var matchMaking = []
     var totalDifference = 0
@@ -14,18 +14,23 @@ module.exports = function (app) {
     var matchFound = 0
     // convert the user arrays to values
     for (let i = 0; i < friends.length; i++) {
+      totalDifference = 0
       for (let j = 0; j < friends[i].scores.length; j++) {
         friends[i].scores[j] = parseInt(friends[i].scores[j])
+        newMatch.scores[j] = parseInt(newMatch.scores[j])
         totalDifference += Math.abs(friends[i].scores[j] - newMatch.scores[j])
+        console.log('total difference', totalDifference)
       }
       matchMaking.push(totalDifference)
     }
-    matchSearch = Math.max(matchMaking)
+    console.log('matchinginging', matchMaking)
+    matchSearch = Math.max.apply(Math, matchMaking)
     console.log('Match Search ', matchSearch)
     matchFound = matchMaking.indexOf(matchSearch)
     console.log('Match Found ', matchFound)
 
     console.log('your match is ', friends[matchFound])
+    friends.push(newMatch)
     res.json(friends[matchFound])
   })
 }

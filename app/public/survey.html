@@ -16,12 +16,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <!-- CSS Link -->
-    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+    <style>
+      i.fab {
+        color: dodgerblue;
+      }
+      label {
+        display: block;
+      }
+    </style>
   </head>
 
   <body>
     <div class="container">
-      <h1>Survey</h1>
+      <h1><i class="fab fa-facebook-square" aria-hidden="true"></i> Survey</h1>
       <hr>
       <form>
         <div class="form-group">
@@ -157,13 +164,9 @@
 
         <button type="submit" class="btn btn-primary btn-block" id="newSubmit">Submit</button>
       </form>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          Launch demo modal
-        </button>
-        
-      <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      <div class="modal fade bd-example-modal-lg" id="modalMatch" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="modalName">Chicago Bears</h5>
@@ -172,7 +175,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <img src='http://content.sportslogos.net/logos/7/169/full/354.png'class="img-fluid">
+              <img src='https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'class="img-fluid" id="modalIMG">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -223,8 +226,11 @@
               ]
             }
             // QUESTION: What does $.get do? What are the parameters it is expecting?
-            $.get("/api/friends/", newFriend, function (data) {
+            $.post("/api/friends/", newFriend, function (data) {
               console.log(data);
+              $("#modalName").text(data.name)
+              $("#modalIMG").attr('src', data.photo)
+              $("#modalMatch").modal('toggle')
             });
           });
         })
