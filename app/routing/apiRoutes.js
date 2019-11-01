@@ -1,10 +1,11 @@
 var friends = require('../data/friends.js')
 
 module.exports = function (app) {
+  // Get route to display a JSON of all friends
   app.get('/api/friends', function (req, res) {
     res.json(friends)
   })
-
+  // Post route to handle incoming survey results
   app.post('/api/friends', function (req, res) {
     var newMatch = req.body
     var matchMaking = []

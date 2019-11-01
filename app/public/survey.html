@@ -15,15 +15,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <!-- CSS -->
     <style>
-     
       i.fab {
         color: dodgerblue;
       }
-
       label {
         display: block;
       }
-   
     </style>
   </head>
   <body>
@@ -39,7 +36,7 @@
       <form class = "needs-validation" id='newForm' novalidate> 
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name" required>
+          <input type="text" class="form-control" id="name" aria-describedby="textHelp" placeholder="Name" required>
         </div>
         <div class="form-group">
           <label for="profilePic">Link to Photo Image (required)</label>
@@ -169,9 +166,11 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="newSubmit">Submit</button>
       </form>
-
+<!-- ======================================================================= -->
+<!-- Modal -->
+<!-- ======================================================================= -->
       <div class="modal fade bd-example-modal-lg" id="modalMatch" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        aria-labelledby="modal" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -183,7 +182,7 @@
             <div class="modal-body">
               <img
                 src='https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
-                class="img-fluid" id="modalIMG">
+                class="img-fluid" id="modalIMG" alt="profilepic">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="modalClose" data-dismiss="modal">Close</button>
@@ -195,13 +194,12 @@
       <div class="footer">
         <div class="container">
           <small>
-            <p>
               <a href="/api/friends">API Friends List</a>
               |
-              <a href="https:/github.com/armonkahil/FriendFinder">GitHub Repo</a>
-            </p>
+              <a href="https://github.com/armonkahil/FriendFinder">GitHub Repo</a>
           </small>
         </div>
+      </div>
       </div>
       <!-- ==================================================================== -->
       <!-- Bootstrap Scripts -->
@@ -218,7 +216,7 @@
       <!-- =================================================================== -->
       <!-- Survey Submit scripts -->
       <!-- =================================================================== -->
-      <script type="text/javascript">
+      <script>
         $(document).ready(function () {
             var incomplete = "Form incomplete"
             $("#newSubmit").on("click", function () {
@@ -240,6 +238,7 @@
                   $("#modalName").text('Your best match: ' + data.name)
                   $("#modalIMG").attr('src', data.photo)
                   $("#modalMatch").modal('toggle')
+                  // when modal is closed, reset form
                   $('#modalClose').on('click', function () {
                     $('#newForm')[0].reset()
                   })
