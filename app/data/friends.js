@@ -78,54 +78,6 @@ var friends = [{
     4,
     4
   ]
-},
-{
-  name: "Patches",
-  photo: "https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  scores: [
-    5,
-    4,
-    2,
-    3,
-    1,
-    3,
-    1,
-    2,
-    5,
-    5
-  ]
-},
-{
-  name: "Ranger",
-  photo: "https://images.pexels.com/photos/683205/pexels-photo-683205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  scores: [
-    3,
-    1,
-    4,
-    1,
-    4,
-    2,
-    5,
-    3,
-    3,
-    1
-  ]
-},
-{
-  name: "Sebastian",
-  photo: "https://images.pexels.com/photos/380809/pexels-photo-380809.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  scores: [
-    1,
-    3,
-    2,
-    2,
-    3,
-    1,
-    1,
-    5,
-    3,
-    4
-  ]
 }
 ]
 

@@ -10,8 +10,6 @@
     <!-- Jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Google Fonts CDN -->
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <!-- bootstrap cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -20,6 +18,7 @@
       i.fab {
         color: dodgerblue;
       }
+
       label {
         display: block;
       }
@@ -28,12 +27,21 @@
 
   <body>
     <div class="container">
+      <!-- ================================================================= -->
+      <!-- Header -->
+      <!-- ================================================================= -->
       <h1><i class="fab fa-facebook-square" aria-hidden="true"></i> Survey</h1>
       <hr>
-      <form>
+      <!-- ================================================================= -->
+      <!-- Form -->
+      <!-- ================================================================= -->
+      <form class = "needs-validation" novalidate> 
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name" required>
+          <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name" required>
+          <div class="valid-feedback">
+              Looks good!
+            </div>
         </div>
         <div class="form-group">
           <label for="profilePic">Link to Photo Image (required)</label>
@@ -42,7 +50,7 @@
         <div class="form-group">
           <label for="question1">Question 1</label>
           <label for="question1">Your mind is always buzzing with unexplored ideas and places</label>
-          <select class="form-control" id="question1">
+          <select class="form-control" id="question1" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -54,7 +62,7 @@
         <div class="form-group">
           <label for="question1">Question 2</label>
           <label for="question1">Your mind is always buzzing with unexplored ideas and places</label>
-          <select class="form-control" id="question2">
+          <select class="form-control" id="question2" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -66,7 +74,7 @@
         <div class="form-group">
           <label for="question1">Question 3</label>
           <label for="question1">You find it easy to stay relaxed and focused even when there is some pressure.</label>
-          <select class="form-control" id="question3">
+          <select class="form-control" id="question3" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -78,7 +86,7 @@
         <div class="form-group">
           <label for="question1">Question 4</label>
           <label for="question1">Your mind is always buzzing with unexplored ideas and places</label>
-          <select class="form-control" id="question4">
+          <select class="form-control" id="question4" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -90,7 +98,7 @@
         <div class="form-group">
           <label for="question1">Question 5</label>
           <label for="question1">You rarely do something just out of sheer curiosity.</label>
-          <select class="form-control" id="question5">
+          <select class="form-control" id="question5" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -102,7 +110,7 @@
         <div class="form-group">
           <label for="question1">Question 6</label>
           <label for="question1">People can rarely upset you.</label>
-          <select class="form-control" id="question6">
+          <select class="form-control" id="question6" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -114,7 +122,7 @@
         <div class="form-group">
           <label for="question1">Question 7</label>
           <label for="question1">It is often difficult for you to relate to other people’s feelings.</label>
-          <select class="form-control" id="question7">
+          <select class="form-control" id="question7" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -127,7 +135,7 @@
           <label for="question1">Question 8</label>
           <label for="question1">In a discussion, truth should be more important than people’s sensitivities.
           </label>
-          <select class="form-control" id="question8">
+          <select class="form-control" id="question8" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -140,7 +148,7 @@
           <label for="question1">Question 9</label>
           <label for="question1">You think that everyone’s views should be respected regardless of whether they are
             supported by facts or not.</label>
-          <select class="form-control" id="question9">
+          <select class="form-control" id="question9" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -152,7 +160,7 @@
         <div class="form-group">
           <label for="question1">Question 10</label>
           <label for="question1">You feel more energetic after spending time with a group of people..</label>
-          <select class="form-control" id="question10">
+          <select class="form-control" id="question10" required>
             <option selected>Choose...</option>
             <option>1</option>
             <option>2</option>
@@ -161,11 +169,11 @@
             <option>5</option>
           </select>
         </div>
-
         <button type="submit" class="btn btn-primary btn-block" id="newSubmit">Submit</button>
       </form>
-      <div class="modal fade bd-example-modal-lg" id="modalMatch" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
+
+      <div class="modal fade bd-example-modal-lg" id="modalMatch" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -175,11 +183,13 @@
               </button>
             </div>
             <div class="modal-body">
-              <img src='https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'class="img-fluid" id="modalIMG">
+              <img
+                src='https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+                class="img-fluid" id="modalIMG">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              
+
             </div>
           </div>
         </div>
@@ -211,7 +221,7 @@
       <!-- =================================================================== -->
       <script type="text/javascript">
         $(document).ready(function () {
-
+          var incomplete = "Form incomplete"
           // QUESTION: What is this code doing?
           $("#newSubmit").on("click", function () {
             event.preventDefault()
@@ -225,16 +235,20 @@
                   "#question8").val(), $("#question10").val()
               ]
             }
-            // QUESTION: What does $.get do? What are the parameters it is expecting?
-            $.post("/api/friends/", newFriend, function (data) {
-              console.log(data);
-              $("#modalName").text(data.name)
-              $("#modalIMG").attr('src', data.photo)
-              $("#modalMatch").modal('toggle')
-            });
-          });
+            if (newFriend.name === '' || newFriend.photo === '' || newFriend.scores.includes('Choose...')) {
+              alert('Form incomplete')
+            } else {
+              console.log(newFriend)
+              // QUESTION: What does $.get do? What are the parameters it is expecting?
+              $.post("/api/friends/", newFriend, function (data) {
+                console.log(data);
+                $("#modalName").text(data.name)
+                $("#modalIMG").attr('src', data.photo)
+                $("#modalMatch").modal('toggle')
+              })
+            }
+          })
         })
       </script>
   </body>
-
 </html>
