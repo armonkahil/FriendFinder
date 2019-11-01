@@ -157,6 +157,30 @@
 
         <button type="submit" class="btn btn-primary btn-block" id="newSubmit">Submit</button>
       </form>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button>
+        
+      <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalName">Chicago Bears</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img src='http://content.sportslogos.net/logos/7/169/full/354.png'class="img-fluid">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="footer">
         <div class="container">
           <small>
@@ -183,22 +207,27 @@
       <!-- Survey Submit scripts -->
       <!-- =================================================================== -->
       <script type="text/javascript">
-        // QUESTION: What is this code doing?
-        $("#newSubmit").on("click", function () {
-          event.preventDefault()
-          var newFriend = {
-            name: $("#name").val().trim(),
-            photo: $("#profilePic").val().trim(),
-            scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4").val(),
-              $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(), $(
-                "#question8").val(), $("#question10").val()
-            ]
-          }
-          // QUESTION: What does $.get do? What are the parameters it is expecting?
-          $.get("/api/friends/", newFriend, function (data) {
-            console.log(data);
+        $(document).ready(function () {
+
+          // QUESTION: What is this code doing?
+          $("#newSubmit").on("click", function () {
+            event.preventDefault()
+            var newFriend = {
+              name: $("#name").val().trim(),
+              photo: $("#profilePic").val().trim(),
+              scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4")
+                .val(),
+                $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(),
+                $(
+                  "#question8").val(), $("#question10").val()
+              ]
+            }
+            // QUESTION: What does $.get do? What are the parameters it is expecting?
+            $.get("/api/friends/", newFriend, function (data) {
+              console.log(data);
+            });
           });
-        });
+        })
       </script>
   </body>
 

@@ -6,9 +6,26 @@ module.exports = function (app) {
   })
 
   app.post('/api/friends', function (req, res) {
-   console.log(req.body)
+    console.log(req.body)
     var newMatch = req.body
-    console.log('new match ', newMatch)
-    res.json(newMatch)
+    var matchMaking = []
+    var totalDifference = 0
+    var matchSearch = 0
+    var matchFound = 0
+    // convert the user arrays to values
+    for (let i = 0; i < friends.length; i++) {
+      for (let j = 0; j < friends[i].scores.length; j++) {
+        friends[i].scores[j] = parseInt(friends[i].scores[j])
+        totalDifference += Math.abs(friends[i].scores[j] - newMatch.scores[j])
+      }
+      matchMaking.push(totalDifference)
+    }
+    matchSearch = Math.max(matchMaking)
+    console.log('Match Search ', matchSearch)
+    matchFound = matchMaking.indexOf(matchSearch)
+    console.log('Match Found ', matchFound)
+
+    console.log('your match is ', friends[matchFound])
+    res.json(friends[matchFound])
   })
 }
