@@ -35,7 +35,7 @@
       <!-- ================================================================= -->
       <!-- Form -->
       <!-- ================================================================= -->
-      <form class = "needs-validation" novalidate> 
+      <form class = "needs-validation" id='newForm' novalidate> 
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Name" required>
@@ -188,7 +188,7 @@
                 class="img-fluid" id="modalIMG">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" id="modalClose" data-dismiss="modal">Close</button>
 
             </div>
           </div>
@@ -221,33 +221,36 @@
       <!-- =================================================================== -->
       <script type="text/javascript">
         $(document).ready(function () {
-          var incomplete = "Form incomplete"
-          // QUESTION: What is this code doing?
-          $("#newSubmit").on("click", function () {
-            event.preventDefault()
-            var newFriend = {
-              name: $("#name").val().trim(),
-              photo: $("#profilePic").val().trim(),
-              scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4")
-                .val(),
-                $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(),
-                $(
-                  "#question8").val(), $("#question10").val()
-              ]
-            }
-            if (newFriend.name === '' || newFriend.photo === '' || newFriend.scores.includes('Choose...')) {
-              alert('Form incomplete')
-            } else {
-              console.log(newFriend)
-              // QUESTION: What does $.get do? What are the parameters it is expecting?
-              $.post("/api/friends/", newFriend, function (data) {
-                console.log(data);
-                $("#modalName").text(data.name)
-                $("#modalIMG").attr('src', data.photo)
-                $("#modalMatch").modal('toggle')
-              })
-            }
-          })
+            var incomplete = "Form incomplete"
+          
+            $("#newSubmit").on("click", function () {
+              event.preventDefault()
+              var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#profilePic").val().trim(),
+                scores: [$("#question1").val(), $("#question2").val(), $("#question3").val(), $("#question4")
+                  .val(),
+                  $("#question5").val(), $("#question6").val(), $("#question7").val(), $("#question8").val(),
+                  $(
+                    "#question8").val(), $("#question10").val()
+                ]
+              }
+              if (newFriend.name === '' || newFriend.photo === '' || newFriend.scores.includes('Choose...')) {
+                alert('Form incomplete')
+              } else {
+                console.log(newFriend)
+                // QUESTION: What does $.get do? What are the parameters it is expecting?
+                $.post("/api/friends/", newFriend, function (data) {
+                  console.log(data);
+                  $("#modalName").text(data.name)
+                  $("#modalIMG").attr('src', data.photo)
+                  $("#modalMatch").modal('toggle')
+                  $('#modalClose').on('click', function () {
+                    $('#newForm')[0].reset()
+                  })
+                })
+              }
+            })
         })
       </script>
   </body>
