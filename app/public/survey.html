@@ -237,7 +237,7 @@
                 alert('Form incomplete')
               } else {
                 $.post("/api/friends/", newFriend, function (data) {
-                  $("#modalName").text('Your best match:', data.name)
+                  $("#modalName").text('Your best match: ' + data.name)
                   $("#modalIMG").attr('src', data.photo)
                   $("#modalMatch").modal('toggle')
                   $('#modalClose').on('click', function () {
