@@ -20,8 +20,9 @@ module.exports = function (app) {
         totalDifference += Math.abs(friends[i].scores[j] - newMatch.scores[j])
       }
       matchMaking.push(totalDifference)
+      console.log('total difference: ', totalDifference)
     }
-    matchSearch = Math.max.apply(Math, matchMaking)
+    matchSearch = Math.min.apply(Math, matchMaking)
     matchFound = matchMaking.indexOf(matchSearch)
     friends.push(newMatch)
     res.json(friends[matchFound])
